@@ -37,7 +37,7 @@ export default function Login({ navigation }) {
   const entrar = () => {
     navigation.reset({
       index: 0,
-      routes: [{ name: "Home" }],
+      routes: [{ name: "Login" }],
     });
   };
 

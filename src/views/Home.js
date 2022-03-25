@@ -3,6 +3,7 @@ import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+import Perfil from "./Perfil";
 <View>
   <Text>usuariooleee</Text>
 </View>;
@@ -13,7 +14,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="perfil" component={perfil} />
+        <Tab.Screen name="Perfil" component={Perfil} />
         <Tab.Screen name="minhas salas" component={minhasSalas} />
         <Tab.Screen name="sair" component={sair} />
       </Tab.Navigator>
