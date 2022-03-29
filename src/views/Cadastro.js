@@ -29,15 +29,15 @@ import * as Animatable from "react-native-animatable";
 import BackgroundImage from "../../assets/CADASTRAR.png";
 import styles from "./components/mainStyles";
 
-export default function Login({ navigation }) {
+export default function Cadastro({ navigation }) {
   const [nome, setNome] = useState(null);
   const [email, setEmail] = useState(null);
   const [senha, setSenha] = useState(null);
 
-  const entrar = () => {
+  const Cadastrar = () => {
     navigation.reset({
       index: 0,
-      routes: [{ name: "Home" }],
+      routes: [{ name: "Login" }],
     });
   };
 
@@ -67,9 +67,9 @@ export default function Login({ navigation }) {
         </View>
         <Animatable.Image />
         <Animatable.Text></Animatable.Text>
-        <View style={styles.bottomView}>
+        <View style={[styles.bottomView, specificStyles.bottomViewC]}>
           <Text style={styles.loginText}>login</Text>
-          <View style={styles.inputView}>
+          <View style={[styles.inputView, specificStyles.inputViewC]}>
             <Icon
               style={styles.inputIcon}
               name="user"
@@ -86,7 +86,24 @@ export default function Login({ navigation }) {
               useState
             />
           </View>
-          <View style={styles.inputView}>
+          <View style={[styles.inputView, specificStyles.inputViewC]}>
+            <Icon
+              style={styles.inputIcon}
+              name="email"
+              type="ionicons"
+              color="#FB5A48"
+            />
+            <TextInput
+              style={styles.input}
+              onChangeText={(value) => setEmail(value)}
+              placeholder="email"
+              autoCapitalize="none"
+              keyboardType="email-address"
+              textContentType="emailAddress"
+              useState
+            />
+          </View>
+          <View style={[styles.inputView, specificStyles.inputViewC]}>
             <Icon
               style={styles.inputIcon}
               name="lock"
@@ -101,23 +118,40 @@ export default function Login({ navigation }) {
               autoCapitalize="none"
             />
           </View>
-          <Text style={styles.fpText}>Esqueci minha senha?</Text>
           <Button
             icon={<Icon name="check" size={15} color="#FB5A48" />}
-            title="ENTRAR"
+            title="CADASTRAR"
             titleStyle={styles.loginButtonText}
             buttonStyle={styles.loginButton}
-            onPress={() => entrar()}
+            onPress={() => Cadastrar()}
           />
-
-          <Text style={styles.registerText}>
-            não tem uma conta?
-            <Text style={{ color: "#FB5A48", fontFamily: "SourceSansProBold" }}>
-              {"Cadastre-se"}
-            </Text>
-          </Text>
         </View>
       </View>
     </TouchableWithoutFeedback>
   );
 }
+const specificStyles = StyleSheet.create({
+  inputViewC: {
+    height: 40,
+    borderRadius: 10,
+    backgroundColor: "#05A895B2",
+    marginTop: 10,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingTop: 18,
+  },
+  bottomViewC: {
+    backgroundColor: "#05A895B2",
+    opacity: 0.95,
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    paddingTop: 10,
+    paddingBottom: 20,
+    paddingHorizontal: 20,
+  },
+});

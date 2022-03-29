@@ -34,10 +34,16 @@ export default function Login({ navigation }) {
   const [email, setEmail] = useState(null);
   const [senha, setSenha] = useState(null);
 
+  const cadastrar = () => {
+    navigation.reset({
+      index: 0,
+      routes: [{ name: "Cadastro" }],
+    });
+  };
   const entrar = () => {
     navigation.reset({
       index: 0,
-      routes: [{ name: "Login" }],
+      routes: [{ name: "Home" }],
     });
   };
 
@@ -116,7 +122,10 @@ export default function Login({ navigation }) {
 
           <Text style={styles.registerText}>
             não tem uma conta?
-            <Text style={{ color: "#FB5A48", fontFamily: "SourceSansProBold" }}>
+            <Text
+              style={{ color: "#FB5A48", fontFamily: "SourceSansProBold" }}
+              onPress={() => cadastrar()}
+            >
               {"Cadastre-se"}
             </Text>
           </Text>
