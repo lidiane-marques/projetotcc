@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import styles from "./components/mainStyles";
 import Icon from "react-native-vector-icons/Feather";
-import LinearGradient from "react-native-linear-gradient";
+import {LinearGradient} from 'expo-linear-gradient';
 import MinhasSalas from "./MinhasSalas.js";
 import Config from "./Config.js";
 import Perfil from "./Perfil";
@@ -57,6 +57,7 @@ export default function tab() {
             return <Icon name={iconName} size={size} color={color} />;
           },
         })}
+
         tabBarOptions={{
           activeTintColor: "#FB5A48",
           inactiveTintColor: "#000",
@@ -75,9 +76,9 @@ export default function tab() {
                   style={styles.iconTabRound}
                   start={{ x: 0, y: 1 }}
                   end={{ x: 0, y: 0 }}
-                  colors={["#D500F9", "#4A148C"]}
+                  colors={["#05A895B2", "#FB5A48"]}
                 >
-                  <Icon name="plus" size={26} color="#FFF" />
+                  <Icon name="plus" size={18} color="#FFF" />
                 </LinearGradient>
               </View>
             ),
