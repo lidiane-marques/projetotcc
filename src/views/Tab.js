@@ -38,13 +38,13 @@ export default function tab() {
                 iconName = "home";
                 break;
               case "perfil":
-                iconName = "list";
+                iconName = "user";
                 break;
               case "Post":
                 iconName = "edit";
                 break;
               case "Salas":
-                iconName = "bell";
+                iconName = "message-circle";
                 break;
               case "Configuração":
                 iconName = "settings";

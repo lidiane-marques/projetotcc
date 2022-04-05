@@ -11,6 +11,8 @@ import {
   Keyboard,
 } from "react-native";
 
+import firebase from "../config/firebaseConecton";
+
 // expo install expo-font
 import { useFonts } from "expo-font";
 
@@ -28,11 +30,37 @@ import * as Animatable from "react-native-animatable";
 
 import BackgroundImage from "../../assets/CADASTRAR.png";
 import styles from "./components/mainStyles";
-
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 export default function Cadastro({ navigation }) {
+
+  const database = firebase.firestore()
+
+
   const [nome, setNome] = useState(null);
   const [email, setEmail] = useState(null);
   const [senha, setSenha] = useState(null);
+  const [errorLogin, setErrorLogin] = useState(null);
+
+  const Registerfirebase = () => {
+   
+
+const auth = getAuth().createUserWithEmailAndPassword( email, senha).then((userCredential) => {
+    
+    let user = userCredential.user;
+    console.log(user)
+    navigation.navigate("Login")
+  
+  })
+  .catch((error) => {
+    setErrorLogin(true)
+    let errorCode = error.code;
+    let errorMessage = error.message;
+    // ..
+  });
+
+
+
+  }
 
   const Cadastrar = () => {
     navigation.reset({
@@ -123,7 +151,7 @@ export default function Cadastro({ navigation }) {
             title="CADASTRAR"
             titleStyle={styles.loginButtonText}
             buttonStyle={styles.loginButton}
-            onPress={() => Cadastrar()}
+            onPress={() => Registerfirebase()}
           />
         </View>
       </View>

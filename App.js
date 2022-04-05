@@ -15,7 +15,7 @@ export default nave = (props) => {
         <Stack.Screen
           name="Login"
           component={Login}
-          options={{ headerShadowVisible: false }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen name="User" component={User} options={{}} />
         <Stack.Screen name="Home" component={Home} />
