@@ -12,7 +12,7 @@ import {
 } from "react-native";
 
 //conexao firebase 
-import firebase from "../config/firebaseConecton";
+
 
 import { useFonts } from "expo-font";
 
@@ -31,21 +31,17 @@ import styles from "./components/mainStyles";
 
 export default function Login({ navigation }) {
 
-const database = firebase.firestore()
+
 
   const [email, setEmail] = useState(null);
   const [senha, setSenha] = useState(null);
   const [errorLogin, setErrorLogin] = useState(null);
 
-  const loginfirebase = () => {
+  
+
+    
 
 
-
-
-  }
-  useEffect(()=>{
-
-  }, []);
 
   const cadastrar = () => {
     navigation.reset({

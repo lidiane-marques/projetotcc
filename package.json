@@ -16,7 +16,9 @@
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.0",
     "expo": "~44.0.0",
+    "expo-linear-gradient": "~11.0.3",
     "expo-status-bar": "~1.2.0",
+    "expo-vector-icons": "^10.0.1",
     "firebase": "^9.6.10",
     "node-modules": "^1.0.1",
     "react": "17.0.1",
@@ -32,8 +34,7 @@
     "react-native-vector-icons": "^9.1.0",
     "react-native-web": "0.17.1",
     "react-navigation": "^4.4.4",
-    "undefined": "@expo/vector-icons/fontAwesome",
-    "expo-linear-gradient": "~11.0.3"
+    "undefined": "@expo/vector-icons/fontAwesome"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
