@@ -11,6 +11,8 @@ import {
   Keyboard,
 } from "react-native";
 
+
+
 // expo install expo-font
 import { useFonts } from "expo-font";
 
@@ -29,10 +31,27 @@ import * as Animatable from "react-native-animatable";
 import BackgroundImage from "../../assets/CADASTRAR.png";
 import styles from "./components/mainStyles";
 
+import { createUserWithEmailAndPassword} from "firebase/auth"
+import {auth} from "../firebaseConecton"
 export default function Cadastro({ navigation }) {
   const [nome, setNome] = useState(null);
   const [email, setEmail] = useState(null);
-  const [senha, setSenha] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [errorLogin, setErrorLogin] = useState(null);
+
+  async function criarUsuario(){
+    await
+     createUserWithEmailAndPassword(auth, email, password)
+    .then (value =>{
+      console.log('cadastrado \n' + value.user.uid);
+    })
+    .catch(error => console.log(error));
+    navigation.reset({
+      index: 0,
+      routes: [{ name: "Login" }],
+    });
+  }
+  
 
   const Cadastrar = () => {
     navigation.reset({
@@ -79,6 +98,7 @@ export default function Cadastro({ navigation }) {
             <TextInput
               style={styles.input}
               onChangeText={(value) => setNome(value)}
+              value={nome}
               placeholder="nome"
               autoCapitalize="none"
               keyboardType="email-address"
@@ -96,6 +116,8 @@ export default function Cadastro({ navigation }) {
             <TextInput
               style={styles.input}
               onChangeText={(value) => setEmail(value)}
+              value={email}
+
               placeholder="email"
               autoCapitalize="none"
               keyboardType="email-address"
@@ -112,7 +134,9 @@ export default function Cadastro({ navigation }) {
             />
             <TextInput
               style={styles.input}
-              onChangeText={(value) => setSenha(value)}
+              onChangeText={(value) => setPassword(value)}
+              value={password}
+
               placeholder="senha"
               secureTextEntry={true}
               autoCapitalize="none"
@@ -123,7 +147,7 @@ export default function Cadastro({ navigation }) {
             title="CADASTRAR"
             titleStyle={styles.loginButtonText}
             buttonStyle={styles.loginButton}
-            onPress={() => Cadastrar()}
+            onPress={() => criarUsuario()}
           />
         </View>
       </View>

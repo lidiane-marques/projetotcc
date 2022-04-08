@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -11,28 +11,37 @@ import {
   Keyboard,
 } from "react-native";
 
-// expo install expo-font
+//conexao firebase 
+
+
 import { useFonts } from "expo-font";
 
 // https://fonts.google.com/specimen/Source+Sans+Pro
 import SourceSansProLight from "../../assets/SourceSansPro/SourceSansPro-Light.ttf";
 import SourceSansProRegular from "../../assets/SourceSansPro/SourceSansPro-Regular.ttf";
 import SourceSansProBold from "../../assets/SourceSansPro/SourceSansPro-Bold.ttf";
-
-// npm install react-native-elements
-// mudar para react-native-vector-icons/fontAwesome
+import MaterialCommunityIcons from "@expo/vector-icons"
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Button } from "react-native-elements";
-// npm install react-native-animatable
+
 import * as Animatable from "react-native-animatable";
 
 import BackgroundImage from "../../assets/logo3.png";
 import styles from "./components/mainStyles";
 
 export default function Login({ navigation }) {
-  const [nome, setNome] = useState(null);
+
+
+
   const [email, setEmail] = useState(null);
   const [senha, setSenha] = useState(null);
+  const [errorLogin, setErrorLogin] = useState(null);
+
+  
+
+    
+
+
 
   const cadastrar = () => {
     navigation.reset({
@@ -88,7 +97,8 @@ export default function Login({ navigation }) {
             />
             <TextInput
               style={styles.input}
-              onChangeText={(value) => setNome(value)}
+              onChangeText={(text) => setEmail(text)}
+              value= {email}
               placeholder="nome"
               autoCapitalize="none"
               keyboardType="email-address"
@@ -105,13 +115,26 @@ export default function Login({ navigation }) {
             />
             <TextInput
               style={styles.input}
-              onChangeText={(value) => setSenha(value)}
+              onChangeText={(text) => setSenha(text)}
+              value = {senha}
               placeholder="senha"
               secureTextEntry={true}
               autoCapitalize="none"
             />
+            {errorLogin === true ? 
+            <View style={styles.contentAlert}>
+              <MaterialCommunityIcons
+               name="alert-circle"
+               size={25}
+               color="#FB5A48"
+              /><Text style={styles.textAlert}> Srnha ou e-mail invalido</Text>
+              </View>
+            :<View/>
+            }
           </View>
+
           <Text style={styles.fpText}>Esqueci minha senha?</Text>
+          {/* //{email==="" || senha === "" ? :}:  */}
           <Button
             icon={<Icon name="check" size={15} color="#FB5A48" />}
             title="ENTRAR"

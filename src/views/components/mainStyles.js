@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    borderBottomWidth: 2
   },
   inputIcon: {
     paddingHorizontal: 8,
@@ -65,12 +66,17 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 10,
     flex: 5,
+    shadowColor: "#9C27B0",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
   },
   loginButtonText: {
     color: "#fff",
     fontFamily: "SourceSansProRegular",
     alignSelf: "center",
     fontSize: 18,
+    
   },
   registerText: {
     alignSelf: "center",
@@ -99,6 +105,17 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 5,
   },
+  contentAlert: {
+    marginTop: 20,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  textAlert:{
+    paddingLeft: 10,
+    color: "#bdbdbd",
+    fontSize: 16,
+  }
 });
 
 export default styles;

@@ -10,17 +10,11 @@ import MinhasSalas from "./MinhasSalas.js";
 import Config from "./Config.js";
 import Perfil from "./Perfil";
 import Home from "./Home";
+import Post from "./Post";
+
 <View>
   <Text>homeeee</Text>
 </View>;
-
-function PostScreen() {
-  return (
-    <View style={styles.container}>
-      <Text>New Post!</Text>
-    </View>
-  );
-}
 
 const Tab = createBottomTabNavigator();
 
@@ -38,13 +32,13 @@ export default function tab() {
                 iconName = "home";
                 break;
               case "perfil":
-                iconName = "list";
+                iconName = "user";
                 break;
               case "Post":
                 iconName = "edit";
                 break;
               case "Salas":
-                iconName = "bell";
+                iconName = "message-circle";
                 break;
               case "Configuração":
                 iconName = "settings";
@@ -67,7 +61,7 @@ export default function tab() {
         <Tab.Screen name="Perfil" component={Perfil} />
         <Tab.Screen
           name="Post"
-          component={PostScreen}
+          component={Post}
           options={() => ({
             tabBarIcon: ({ tintColor }) => (
               <View>
