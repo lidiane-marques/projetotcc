@@ -1,25 +1,31 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Button } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
+import styles from "./components/mainStyles";
 
-const sair = () => {
-  navigation.reset({
-    index: 0,
-    routes: [{ name: "Login" }],
-  })};
-export default function App() {
+export default function cadastro({ navigation }) {
+  const sair = () => {
+    navigation.reset({});
+  };
+
   return (
-    <View style={{ flex: 1,
-      backgroundColor: "#fff",
-      alignItems: "center",
-      justifyContent: "center",}}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Text> config eeeeeeeeeeeeeeeee</Text>
-      <TouchableOpacity style={{ flex: 1, justifyContent: "center", width:200, height:50}} 
-      onPress={() =>sair()}
-      >
-        <Text>sair</Text>
-      </TouchableOpacity>
+      <Button
+        icon={<Icon name="check" size={15} color="#FB5A48" />}
+        title="SAIR"
+        titleStyle={styles.loginButtonText}
+        buttonStyle={styles.loginButton}
+        onPress={() => navigation.navigate("Login")}
+      />
       <StatusBar style="auto" />
     </View>
   );
 }
-

@@ -13,13 +13,9 @@ export default nave = (props) => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
-          options={{ headerShadow: false }}
           name="Login"
           component={Login}
-<<<<<<< HEAD
-=======
           options={{ headerShown: false }}
->>>>>>> 77186b0aed417b5db40650cbcad178f02660a1d4
         />
         <Stack.Screen name="User" component={User} options={{}} />
         <Stack.Screen name="Home" component={Home} />

@@ -11,8 +11,7 @@ import {
   Keyboard,
 } from "react-native";
 
-//conexao firebase 
-
+//conexao firebase
 
 import { useFonts } from "expo-font";
 
@@ -20,7 +19,7 @@ import { useFonts } from "expo-font";
 import SourceSansProLight from "../../assets/SourceSansPro/SourceSansPro-Light.ttf";
 import SourceSansProRegular from "../../assets/SourceSansPro/SourceSansPro-Regular.ttf";
 import SourceSansProBold from "../../assets/SourceSansPro/SourceSansPro-Bold.ttf";
-import MaterialCommunityIcons from "@expo/vector-icons"
+import MaterialCommunityIcons from "@expo/vector-icons";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Button } from "react-native-elements";
 
@@ -28,20 +27,25 @@ import * as Animatable from "react-native-animatable";
 
 import BackgroundImage from "../../assets/logo3.png";
 import styles from "./components/mainStyles";
-
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebaseConecton";
 export default function Login({ navigation }) {
-
-
-
   const [email, setEmail] = useState(null);
-  const [senha, setSenha] = useState(null);
+  const [password, setPassword] = useState(null);
   const [errorLogin, setErrorLogin] = useState(null);
 
-  
+  async function Logar() {
+    await signInWithEmailAndPassword(auth, email, password)
+      .then((value) => {
+        alert("logado com sucesso \n" + value.user.uid);
+      })
+      .catch((error) => console.log(error));
 
-    
-
-
+    navigation.reset({
+      index: 0,
+      routes: [{ name: "Tab" }],
+    });
+  }
 
   const cadastrar = () => {
     navigation.reset({
@@ -98,8 +102,8 @@ export default function Login({ navigation }) {
             <TextInput
               style={styles.input}
               onChangeText={(text) => setEmail(text)}
-              value= {email}
-              placeholder="nome"
+              value={email}
+              placeholder="email"
               autoCapitalize="none"
               keyboardType="email-address"
               textContentType="emailAddress"
@@ -115,22 +119,24 @@ export default function Login({ navigation }) {
             />
             <TextInput
               style={styles.input}
-              onChangeText={(text) => setSenha(text)}
-              value = {senha}
+              onChangeText={(text) => setPassword(text)}
+              value={password}
               placeholder="senha"
               secureTextEntry={true}
               autoCapitalize="none"
             />
-            {errorLogin === true ? 
-            <View style={styles.contentAlert}>
-              <MaterialCommunityIcons
-               name="alert-circle"
-               size={25}
-               color="#FB5A48"
-              /><Text style={styles.textAlert}> Srnha ou e-mail invalido</Text>
+            {errorLogin === true ? (
+              <View style={styles.contentAlert}>
+                <MaterialCommunityIcons
+                  name="alert-circle"
+                  size={25}
+                  color="#FB5A48"
+                />
+                <Text style={styles.textAlert}> Srnha ou e-mail invalido</Text>
               </View>
-            :<View/>
-            }
+            ) : (
+              <View />
+            )}
           </View>
 
           <Text style={styles.fpText}>Esqueci minha senha?</Text>
@@ -140,7 +146,7 @@ export default function Login({ navigation }) {
             title="ENTRAR"
             titleStyle={styles.loginButtonText}
             buttonStyle={styles.loginButton}
-            onPress={() => entrar()}
+            onPress={() => Logar()}
           />
 
           <Text style={styles.registerText}>
